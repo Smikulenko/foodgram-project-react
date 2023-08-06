@@ -220,8 +220,8 @@ class RecipeSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         return RecipeGetSerializer(
-                instance,
-                context=self.context).data
+            instance,
+            context=self.context).data
 
     class Meta:
         model = Recipe

@@ -90,13 +90,11 @@ class Recipe(models.Model):
     image = models.ImageField(
         upload_to='recipes/images/',
         verbose_name='Изоброжение',
-        help_text='Необходимо изображение',
-        )
-    cooking_time = models.PositiveSmallIntegerField(
-       verbose_name='Время приготовления в минутах',
-       help_text='Укажите время приготоаления',
+        help_text='Необходимо изображение',)
 
-    )
+    cooking_time = models.PositiveSmallIntegerField(
+        verbose_name='Время приготовления в минутах',
+        help_text='Укажите время приготоаления',)
 
     class Meta:
         ordering = ('name',)
@@ -118,10 +116,8 @@ class RecipeIngredient(models.Model):
     )
 
     amount = models.IntegerField(
-       verbose_name='Количество',
-       help_text='Укажите Количество',
-
-    )
+        verbose_name='Количество',
+        help_text='Укажите Количество',)
 
     def __str__(self):
         return f'В рецепте {self.recipe} есть ингредиент {self.ingredient}'
