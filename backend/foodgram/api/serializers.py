@@ -64,7 +64,7 @@ class SubscriptionSerializer(serializers.ModelSerializer):
                 code=status.HTTP_400_BAD_REQUEST
             )
         return obj
-    
+
     def get_is_subscribed(self, obj):
         return (
             self.context['request'].user.is_authenticated
