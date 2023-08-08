@@ -1,15 +1,12 @@
 from django_filters import rest_framework as filters
-from django.contrib.auth import get_user_model
 
 from recipes.models import Tag, Recipe
-
-User = get_user_model()
 
 
 class RecipeFilter(filters.FilterSet):
 
     is_favorited = filters.NumberFilter(
-        field_name='lover__user', method='filter_users_lists'
+        field_name='favorite__user', method='filter_users_lists'
     )
     is_in_shopping_cart = filters.NumberFilter(
         field_name='buyer__user', method='filter_users_lists'

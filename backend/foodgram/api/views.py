@@ -30,7 +30,6 @@ class CustomUserViewSet(UserViewSet):
     permission_classes = (IsAuthenticated,)
 
     @action(detail=False, methods=['get'],
-            pagination_class=None,
             permission_classes=(IsAuthenticated,))
     def me(self, request):
         serializer = UserSerializer(request.user)

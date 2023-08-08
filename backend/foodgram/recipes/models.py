@@ -1,7 +1,6 @@
-from django.contrib.auth import get_user_model
 from django.db import models
 
-User = get_user_model()
+from users.models import User
 
 
 class Tag(models.Model):
@@ -22,13 +21,13 @@ class Tag(models.Model):
         unique=True,
         null=True,
         verbose_name='Адрес',
-        help_text='Необходимо адрес тега'
+        help_text='Необходим адрес тега'
     )
 
     class Meta:
         ordering = ('name',)
         verbose_name = 'Тег'
-        verbose_name_plural = 'Тег'
+        verbose_name_plural = 'Теги'
 
     def __str__(self):
         return self.name
@@ -50,7 +49,7 @@ class Ingredient(models.Model):
     class Meta:
         ordering = ('name',)
         verbose_name = 'Ингредиент'
-        verbose_name_plural = 'Ингредиент'
+        verbose_name_plural = 'Ингредиенты'
 
     def __str__(self):
         return f'{self.name}, {self.measurement_unit}'
@@ -99,7 +98,7 @@ class Recipe(models.Model):
     class Meta:
         ordering = ('name',)
         verbose_name = 'Рецепт'
-        verbose_name_plural = 'Рецепт'
+        verbose_name_plural = 'Рецепты'
 
     def __str__(self):
         return self.name
@@ -139,7 +138,7 @@ class ShoppingCart(models.Model):
 
     class Meta:
         verbose_name = 'Список пакупок'
-        verbose_name_plural = 'Список пакупок'
+        verbose_name_plural = 'Списки пакупок'
         constraints = [
             models.UniqueConstraint(
                 fields=['user', 'recipe'],
@@ -168,7 +167,7 @@ class Favorite(models.Model):
 
     class Meta:
         verbose_name = 'Избраное'
-        verbose_name_plural = 'Избраное'
+        verbose_name_plural = 'Избраные'
 
     def __str__(self):
         return f'Рецепт {self.recipe} в избранном у {self.user}'
