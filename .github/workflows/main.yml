@@ -22,7 +22,7 @@ jobs:
         with:
           context: ./backend
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_beckend
+          tags: ${{ secrets.DOCKER_USERNAME }}/foodgram_beckend:latest
       - name: Push to Docker Hub frontend
         uses: docker/build-push-action@v3
         with:
@@ -41,7 +41,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           script: |
-            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_backend:latest
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_backend
             sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
             sudo docker-compose stop
             sudo docker-compose rm backend
