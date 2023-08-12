@@ -52,7 +52,9 @@ python3 manage.py runserver
 ```
 
 IP - 84.252.131.215
+
 login admin
+
 password 2332opL
 
 
