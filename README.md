@@ -51,6 +51,10 @@ python3 manage.py runserver
    GET /api/recipes/download_shopping_cart/
 ```
 
+IP - 84.252.131.215
+login admin
+password 2332opL
+
 
 **Автор**
 *Микуленко Софья*
