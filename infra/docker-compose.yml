@@ -2,14 +2,17 @@ version: '3.3'
 services:
 
   db:
-    image: postgres:13.0-alpine
+    image: postgres:13.10
     volumes:
-      - db_value:/var/lib/postgresql/data/
+      - pg_data_value:/var/lib/postgresql/data/
     env_file:
       - ./.env
   
   backend:
-    image: smikulenko/foodgram_beckend:latest
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+
     restart: always
     volumes:
       - static_value:/app/static/
@@ -17,10 +20,13 @@ services:
     depends_on:
       - db
     env_file:
-      - ./.env   
+      - ./.env 
 
   frontend:
-    image: smikulenko/foodgram_frontend
+    #image: smikulenko/foodgram_frontend
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
     volumes:
       - ../frontend/:/app/result_build/
     depends_on:
@@ -42,6 +48,6 @@ services:
       - backend
     restart: always
 volumes:
-  db_value:
+  pg_data_value:
   static_value:
   media_value:
