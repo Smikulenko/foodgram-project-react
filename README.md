@@ -53,9 +53,13 @@ python3 manage.py runserver
 
 IP - 84.252.131.215
 
-login admin
+login admin1
 
-password 2332opL
+Email admin1@mail.ru
+
+password 1234
+
+
 
 
 **Автор**
