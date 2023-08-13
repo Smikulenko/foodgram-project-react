@@ -9,7 +9,7 @@ services:
       - ./.env
   
   backend:
-    image: foodgram_beckend:latest
+    image: smikulenko/foodgram_beckend:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -19,7 +19,7 @@ services:
     env_file:
       - ./.env
   frontend:
-    image: foodgram_frontend:latest
+    image: smikulenko/foodgram_frontend:latest
     
     volumes:
       - ../frontend/:/app/result_build/
