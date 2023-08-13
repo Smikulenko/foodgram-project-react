@@ -9,7 +9,7 @@ services:
       - ./.env
   
   backend:
-    image: smikulenko/foodgram_beckend:latest
+    image: foodgram_beckend:latest
     restart: always
     volumes:
       - static_value:/app/static/
@@ -17,17 +17,17 @@ services:
     depends_on:
       - db
     env_file:
-      - ./.env 
-
+      - ./.env
   frontend:
-    image: smikulenko/foodgram_frontend
+    image: foodgram_frontend:latest
+    
     volumes:
       - ../frontend/:/app/result_build/
-    depends_on:
-      - backend
-
+      - static_value:/app/static/
+      - media_value:/app/media/
+  
   nginx:
-    image: nginx:1.19.3
+    image: nginx:1.21.3-alpine
     ports:
       - "8080:80"
     volumes:
@@ -38,7 +38,7 @@ services:
       - media_value:/var/html/media/
     depends_on:
       - backend
-    restart: always
+      - frontend
 volumes:
   pg_data:
   static_value:
